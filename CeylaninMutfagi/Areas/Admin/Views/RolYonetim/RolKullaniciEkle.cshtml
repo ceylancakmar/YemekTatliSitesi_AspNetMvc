@@ -1,0 +1,61 @@
+﻿@model CeylaninMutfagi.Areas.Admin.Models.RolKullaniciEkleModel
+@{
+    ViewBag.Title = "RolKullaniciEkle";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="panel panel-primary" data-collapsed="0">
+
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <h1>RolKullaniciEkle</h1>
+                </div>
+
+                <div class="panel-options">
+                    <a href="#sample-modal" data-toggle="modal" data-target="#sample-modal-dialog-1" class="bg"><i class="entypo-cog"></i></a>
+                    <a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
+                    <a href="#" data-rel="reload"><i class="entypo-arrows-ccw"></i></a>
+                    <a href="#" data-rel="close"><i class="entypo-cancel"></i></a>
+                </div>
+            </div>
+            @using (Html.BeginForm("RolKullaniciEkle", "RolYonetim", FormMethod.Post))
+            {
+                <div class="panel-body">
+
+                    <div class="form-group">
+
+                        @Html.TextBoxFor(m => m.KullaniciAdi)
+                        <div class="col-sm-1">
+                            @Html.LabelFor(m => m.KullaniciAdi)
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        @Html.TextBoxFor(m => m.RolAdi)
+
+                        <div class="col-sm-1">
+
+                            @Html.LabelFor(m => m.RolAdi)
+                        </div>
+                    </div>
+
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-sm-1 col-sm-offset-3">
+                            <div class="btn-toolbar">
+                                <input type="submit" value="Ekle" />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,16 @@
+﻿
+@model List<yemek>
+@{
+    Layout = null;
+}
+@foreach (var item in Model)
+{
+    <div class="col-xs-6 col-md-4 ana-resimler-ayar">
+        <a href="@Url.Action("yemekDetay", "Home",new  {id=@item.yemekID })" class="thumbnail">
+            
+            <img src="@item.ResimYolu">
+            @item.yemekAdi
+        </a>
+
+    </div>
+}

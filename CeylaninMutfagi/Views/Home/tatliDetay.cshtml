@@ -1,0 +1,29 @@
+﻿@model CeylaninMutfagi.tatli
+
+@{
+    ViewBag.Title = "tatliDetay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="continer">
+    <div class="row">
+        <div class=" col-sm-4 col-lg-4 col-md-4">
+            <img class="resim-ayar" src="@Html.DisplayFor(model => model.ResimYolu)" alt="sarma"></img>
+        </div>
+        <div class="col-sm-8 col-lg-8 col-md-8">
+            <h1 class="baslik-ayar">@Html.DisplayFor(model => model.tatliAdi)</h1>
+            <h3 class="yan-baslik">Malzemeler</h3>
+            <ul class="liste-ayar">
+                <li>@Html.DisplayFor(model => model.malzemeler)</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row yapilis-ayar">
+        <h3 class="yapilis-baslik">Yapılışı</h3>
+
+        <ul class="yapilis-anlat">@Html.DisplayFor(model => model.yapilisi)</ul>
+
+
+    </div>
+</div>

@@ -1,0 +1,192 @@
+.pad0
+{
+padding:0px;
+}
+
+.pad10
+{
+	padding:10px;
+}
+
+.padTop20
+{
+	
+padding:10px;	
+}
+.sliderayarla
+{
+	max-height:400px;
+	width:100%;
+}
+.headerayarla{
+ 
+  background-color:#996666;
+}
+.yaziayarla
+{
+  font-size:25px;
+  text-align:center;
+  color:black;
+  
+}
+.navbar-inverse .navbar-nav>li>a{
+ color:black;
+}
+.ayar
+{
+	font-size:35px;
+	padding-right:200px;
+}
+.arkaplan{
+	background-color:#CC9999;
+	
+}
+.footerayarla{
+	
+   
+   width:100%;
+   height:60px;   
+   color:black;
+   bottom:0px;
+   padding-left:0px;
+   padding-top:60px;
+   
+}
+.padayar{
+	padding:10px;
+	border:0px;
+	font-size:20px;
+}
+
+.dene1{
+	background-color:red;
+	height:500px;
+}
+.telayar
+{
+	color:black;
+	font-size:20px;
+	padding-top:10px;
+	padding-right:10px;
+}
+.mailayar
+{
+	color:black;
+	font-size:18px;
+	padding-top:10px;
+	padding-right:10px;
+}
+.adresayar{
+	color:black;
+	font-size:16px;
+	padding-top:10px;
+	padding-right:10px;
+	
+}
+.isim{
+	
+	color:black;
+	font-size:20px;
+	padding-top:50px;
+	padding-right:10px;
+	
+}
+.yemekresim{
+	
+	max-height:130px;
+	width:28%;
+	padding:10px;
+}
+.resim-boyut{
+	height:1000px;
+	width:200px;
+}
+.resimPad
+{
+	padding:100px;
+}
+.kutuayar
+{
+	width: 300px;
+    height: 550px;
+    background:#0099FF;
+    box-sizing: border-box;
+}
+.renkayar
+{
+	color:black;
+}
+.pad-ayar{
+	padding-top:100px;
+}
+.baslik-ayar
+{
+  padding-left:250px;
+  color :Dark;
+	
+}
+.yan-baslik{
+	padding-left:60px;
+}
+.resim-ayar
+{
+	padding-left:60px;
+	width:500px;
+	height:360px;
+	margin-top:10px;
+}
+.liste-ayar{
+	padding-left:80px;
+}
+.yapilis-baslik{
+	padding-left:200px;
+}
+.yapilis-anlat
+{
+	
+	padding-left:60px;
+}
+.yapilis-ayar{
+	padding-top:60px;
+}
+.index-baslik
+{
+	padding-left:120px;
+	padding-top:20px;
+	
+}
+.ana-resimler-ayar
+{
+	padding:30px;
+}
+.menu-ayarla
+{
+	padding:12px;
+}
+.acilir-arkaplan{
+
+	 background-color:#996666;
+	
+}
+
+.form-duzenle
+{
+	padding-top:9px;
+
+}
+
+.dil-ayarla
+{
+   padding-left:5px;
+}
+.panel-boyut{
+  height:1000px;
+}
+.panel-arasi{
+	padding-top:70px;
+}
+.uye-btn-ayar{
+	padding-top:12px;
+}
+
+

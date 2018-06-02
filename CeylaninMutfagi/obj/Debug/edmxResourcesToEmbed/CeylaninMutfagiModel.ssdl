@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="yemekTatliModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Slider">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SliderFoto" Type="image" />
+    <Property Name="SliderText" Type="nvarchar(max)" />
+    <Property Name="BaslangicTarihi" Type="datetime" />
+    <Property Name="BitisTarihi" Type="datetime" />
+    <Property Name="ResimYolu" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tatli">
+    <Key>
+      <PropertyRef Name="tatliID" />
+    </Key>
+    <Property Name="tatliID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tatliAdi" Type="nvarchar(max)" />
+    <Property Name="malzemeler" Type="nvarchar(max)" />
+    <Property Name="yapilisi" Type="nvarchar(max)" />
+    <Property Name="tKategoriID" Type="int" />
+    <Property Name="ResimYolu" Type="nvarchar(max)" />
+    <Property Name="populerlik" Type="int" />
+  </EntityType>
+  <EntityType Name="tatliKategori">
+    <Key>
+      <PropertyRef Name="tKategoriID" />
+    </Key>
+    <Property Name="tKategoriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tKategoriAdi" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="yemek">
+    <Key>
+      <PropertyRef Name="yemekID" />
+    </Key>
+    <Property Name="yemekID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="yemekAdi" Type="nvarchar(max)" />
+    <Property Name="yKategoriID" Type="int" />
+    <Property Name="malzemeler" Type="nvarchar(max)" />
+    <Property Name="yapilisi" Type="nvarchar(max)" />
+    <Property Name="ResimYolu" Type="nvarchar(max)" />
+    <Property Name="populerlik" Type="int" />
+  </EntityType>
+  <EntityType Name="yemekKategori">
+    <Key>
+      <PropertyRef Name="yKategoriID" />
+    </Key>
+    <Property Name="yKategoriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="yKategoriAdi" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK_tatli_tatliKategori">
+    <End Role="tatliKategori" Type="Self.tatliKategori" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tatli" Type="Self.tatli" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tatliKategori">
+        <PropertyRef Name="tKategoriID" />
+      </Principal>
+      <Dependent Role="tatli">
+        <PropertyRef Name="tKategoriID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_yemek_yemekKategori">
+    <End Role="yemekKategori" Type="Self.yemekKategori" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="yemek" Type="Self.yemek" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="yemekKategori">
+        <PropertyRef Name="yKategoriID" />
+      </Principal>
+      <Dependent Role="yemek">
+        <PropertyRef Name="yKategoriID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="yemekTatliModelStoreContainer">
+    <EntitySet Name="Slider" EntityType="Self.Slider" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tatli" EntityType="Self.tatli" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tatliKategori" EntityType="Self.tatliKategori" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="yemek" EntityType="Self.yemek" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="yemekKategori" EntityType="Self.yemekKategori" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_tatli_tatliKategori" Association="Self.FK_tatli_tatliKategori">
+      <End Role="tatliKategori" EntitySet="tatliKategori" />
+      <End Role="tatli" EntitySet="tatli" />
+    </AssociationSet>
+    <AssociationSet Name="FK_yemek_yemekKategori" Association="Self.FK_yemek_yemekKategori">
+      <End Role="yemekKategori" EntitySet="yemekKategori" />
+      <End Role="yemek" EntitySet="yemek" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

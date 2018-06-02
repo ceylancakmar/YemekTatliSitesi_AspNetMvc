@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - CeylanınMutfağı</title>
+   
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Ceylanın Mutfağı</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <!-- Bootstrap -->
+    <link href="/Content/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- ek stiller -->
+    <link href="/Content/css/BnmMtf.css" rel="stylesheet">
+
+
+</head>
+<body>
+    <!--MENÜ ÇUBUĞU--(menü çubuğu için)-->
+    <header class="navbar navbar-inverse headerayarla">
+        <!-- bu bir navbar manü çubuğunu kullanacağımı ve renginin navbar default olacağını söylüyor.-->
+        <div class="container">
+            <!-- menü çubuğunun nasıl yayılacağını gösteriyor..-->
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <!--bu div açma kapama kısmı ise yani akıllı tlf ,tabletlerde ve pc lerde nasıl gözükecek..-->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <!--toggle ve collapse javascripte fonksiyonlarını gösteren seçeneklerdir-->
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span><!--bu üç ikon çizgi sağlamaya yarıyor--javascripte çalışan bir kısımdır..-->
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand " href="#">
+                    <img width="60px" height="30px" alt="Brand" src="/Content/images/logo.jpg">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav yaziayarla nav">
+                    <li>
+                        <a href="index.html">
+                            <button type="button" class="btn btn-danger " aria-haspopup="true" aria-expanded="false">
+                                AnaSayfa
+                            </button>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="yemek.html">
+                            <button type="button" class="btn btn-danger " aria-haspopup="true" aria-expanded="false">
+                                Yemek Tarifleri
+                            </button>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="tatli.html">
+                            <button type="button" class="btn btn-danger " aria-haspopup="true" aria-expanded="false">
+                                Tatlı Tarifleri
+                            </button>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="iletisim.html">
+                            <button type="button" class="btn btn-danger" aria-haspopup="true" aria-expanded="false">
+                                iletişim
+                            </button>
+                        </a>
+                    </li>
+
+
+
+                </ul>
+                <form class="navbar-form navbar-left form-duzenle ">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Tarif Ara">
+                    </div>
+                    <button type="submit" class="btn btn-success">ARA</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="uye-btn-ayar">
+                        <button type="button" class="btn btn-danger dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Üye işlemleri <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu  acilir-arkaplan">
+                            <li><a class="glyphicon glyphicon-user" href="uyeol.html"> Üye Ol</a></li>
+                            <li><a class="glyphicon glyphicon-log-in" href="giris.html"> Giriş</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Language Selector -->
+                    <li class="dropdown language-selector ">
+
+
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true">
+                            <img width="30px" height="30px" src="\Content\images\tr.jpg" />
+                        </a>
+                        
+
+                        <ul class="dropdown-menu  acilir-arkaplan">
+                            <li class="active">
+                                <a href="#">
+                                    <img width="30px" height="30px" src="\Content\images\tr.jpg" />
+                                    <span>Türkçe</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img width="30px" height="30px" src="\Content\images\en.jpg" />
+                                    <span>English</span>
+                                </a>
+                            </li>
+
+
+                        </ul>
+
+                    </li>
+
+
+                </ul>
+
+
+
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </header>
+   
+
+    @RenderBody()
+    <!--footer-->
+
+    <footer>
+        <div class="container">
+            <div class="well">
+                <strong>Copyright&copy; Ceylan Çakmar</strong>
+            </div>
+        </div>
+
+    </footer>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/custom")
+    @Scripts.Render("~/bundles/bootstrap")
+   
+    @RenderSection("scripts", required: false)
+</body>
+</html>

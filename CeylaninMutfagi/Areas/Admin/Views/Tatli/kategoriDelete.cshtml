@@ -1,0 +1,33 @@
+﻿@model CeylaninMutfagi.tatliKategori
+
+@{
+    ViewBag.Title = "kategoriDelete";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>kategoriDelete</h2>
+
+<h3>silmek İstediğinizden Emin misniz</h3>
+<div>
+    <h4>tatliKategori</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tKategoriAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tKategoriAdi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @Html.ActionLink("Sil  ", "kategoriDeleteConfirm", new { id = Model.tKategoriID })  |
+            @Html.ActionLink("Listeye Dön", "kategoriIndex", "Tatli")
+        </div>
+    }
+</div>

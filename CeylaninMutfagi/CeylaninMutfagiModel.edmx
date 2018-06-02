@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="yemekTatliModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Slider">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SliderFoto" Type="image" />
+          <Property Name="SliderText" Type="nvarchar(max)" />
+          <Property Name="BaslangicTarihi" Type="datetime" />
+          <Property Name="BitisTarihi" Type="datetime" />
+          <Property Name="ResimYolu" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tatli">
+          <Key>
+            <PropertyRef Name="tatliID" />
+          </Key>
+          <Property Name="tatliID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tatliAdi" Type="nvarchar(max)" />
+          <Property Name="malzemeler" Type="nvarchar(max)" />
+          <Property Name="yapilisi" Type="nvarchar(max)" />
+          <Property Name="tKategoriID" Type="int" />
+          <Property Name="ResimYolu" Type="nvarchar(max)" />
+          <Property Name="populerlik" Type="int" />
+        </EntityType>
+        <EntityType Name="tatliKategori">
+          <Key>
+            <PropertyRef Name="tKategoriID" />
+          </Key>
+          <Property Name="tKategoriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tKategoriAdi" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="yemek">
+          <Key>
+            <PropertyRef Name="yemekID" />
+          </Key>
+          <Property Name="yemekID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="yemekAdi" Type="nvarchar(max)" />
+          <Property Name="yKategoriID" Type="int" />
+          <Property Name="malzemeler" Type="nvarchar(max)" />
+          <Property Name="yapilisi" Type="nvarchar(max)" />
+          <Property Name="ResimYolu" Type="nvarchar(max)" />
+          <Property Name="populerlik" Type="int" />
+        </EntityType>
+        <EntityType Name="yemekKategori">
+          <Key>
+            <PropertyRef Name="yKategoriID" />
+          </Key>
+          <Property Name="yKategoriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="yKategoriAdi" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_tatli_tatliKategori">
+          <End Role="tatliKategori" Type="Self.tatliKategori" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tatli" Type="Self.tatli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tatliKategori">
+              <PropertyRef Name="tKategoriID" />
+            </Principal>
+            <Dependent Role="tatli">
+              <PropertyRef Name="tKategoriID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_yemek_yemekKategori">
+          <End Role="yemekKategori" Type="Self.yemekKategori" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="yemek" Type="Self.yemek" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="yemekKategori">
+              <PropertyRef Name="yKategoriID" />
+            </Principal>
+            <Dependent Role="yemek">
+              <PropertyRef Name="yKategoriID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="yemekTatliModelStoreContainer">
+          <EntitySet Name="Slider" EntityType="Self.Slider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tatli" EntityType="Self.tatli" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tatliKategori" EntityType="Self.tatliKategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="yemek" EntityType="Self.yemek" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="yemekKategori" EntityType="Self.yemekKategori" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tatli_tatliKategori" Association="Self.FK_tatli_tatliKategori">
+            <End Role="tatliKategori" EntitySet="tatliKategori" />
+            <End Role="tatli" EntitySet="tatli" />
+          </AssociationSet>
+          <AssociationSet Name="FK_yemek_yemekKategori" Association="Self.FK_yemek_yemekKategori">
+            <End Role="yemekKategori" EntitySet="yemekKategori" />
+            <End Role="yemek" EntitySet="yemek" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="yemekTatliModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Slider">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SliderFoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="SliderText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BaslangicTarihi" Type="DateTime" Precision="3" />
+          <Property Name="BitisTarihi" Type="DateTime" Precision="3" />
+          <Property Name="ResimYolu" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tatli">
+          <Key>
+            <PropertyRef Name="tatliID" />
+          </Key>
+          <Property Name="tatliID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tatliAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="malzemeler" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="yapilisi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tKategoriID" Type="Int32" />
+          <NavigationProperty Name="tatliKategori" Relationship="Self.FK_tatli_tatliKategori" FromRole="tatli" ToRole="tatliKategori" />
+          <Property Name="ResimYolu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="populerlik" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tatliKategori">
+          <Key>
+            <PropertyRef Name="tKategoriID" />
+          </Key>
+          <Property Name="tKategoriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tKategoriAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tatli" Relationship="Self.FK_tatli_tatliKategori" FromRole="tatliKategori" ToRole="tatli" />
+        </EntityType>
+        <EntityType Name="yemek">
+          <Key>
+            <PropertyRef Name="yemekID" />
+          </Key>
+          <Property Name="yemekID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="yemekAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="yKategoriID" Type="Int32" />
+          <Property Name="malzemeler" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="yapilisi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="yemekKategori" Relationship="Self.FK_yemek_yemekKategori" FromRole="yemek" ToRole="yemekKategori" />
+          <Property Name="ResimYolu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="populerlik" Type="Int32" />
+        </EntityType>
+        <EntityType Name="yemekKategori">
+          <Key>
+            <PropertyRef Name="yKategoriID" />
+          </Key>
+          <Property Name="yKategoriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="yKategoriAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="yemek" Relationship="Self.FK_yemek_yemekKategori" FromRole="yemekKategori" ToRole="yemek" />
+        </EntityType>
+        <Association Name="FK_tatli_tatliKategori">
+          <End Role="tatliKategori" Type="Self.tatliKategori" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tatli" Type="Self.tatli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tatliKategori">
+              <PropertyRef Name="tKategoriID" />
+            </Principal>
+            <Dependent Role="tatli">
+              <PropertyRef Name="tKategoriID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_yemek_yemekKategori">
+          <End Role="yemekKategori" Type="Self.yemekKategori" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="yemek" Type="Self.yemek" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="yemekKategori">
+              <PropertyRef Name="yKategoriID" />
+            </Principal>
+            <Dependent Role="yemek">
+              <PropertyRef Name="yKategoriID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="yemekTatliEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Slider" EntityType="Self.Slider" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="tatli" EntityType="Self.tatli" />
+          <EntitySet Name="tatliKategori" EntityType="Self.tatliKategori" />
+          <EntitySet Name="yemek" EntityType="Self.yemek" />
+          <EntitySet Name="yemekKategori" EntityType="Self.yemekKategori" />
+          <AssociationSet Name="FK_tatli_tatliKategori" Association="Self.FK_tatli_tatliKategori">
+            <End Role="tatliKategori" EntitySet="tatliKategori" />
+            <End Role="tatli" EntitySet="tatli" />
+          </AssociationSet>
+          <AssociationSet Name="FK_yemek_yemekKategori" Association="Self.FK_yemek_yemekKategori">
+            <End Role="yemekKategori" EntitySet="yemekKategori" />
+            <End Role="yemek" EntitySet="yemek" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="yemekTatliModelStoreContainer" CdmEntityContainer="yemekTatliEntities">
+          <EntitySetMapping Name="Slider">
+            <EntityTypeMapping TypeName="yemekTatliModel.Slider">
+              <MappingFragment StoreEntitySet="Slider">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SliderFoto" ColumnName="SliderFoto" />
+                <ScalarProperty Name="SliderText" ColumnName="SliderText" />
+                <ScalarProperty Name="BaslangicTarihi" ColumnName="BaslangicTarihi" />
+                <ScalarProperty Name="BitisTarihi" ColumnName="BitisTarihi" />
+                <ScalarProperty Name="ResimYolu" ColumnName="ResimYolu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="yemekTatliModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tatli">
+            <EntityTypeMapping TypeName="yemekTatliModel.tatli">
+              <MappingFragment StoreEntitySet="tatli">
+                <ScalarProperty Name="populerlik" ColumnName="populerlik" />
+                <ScalarProperty Name="ResimYolu" ColumnName="ResimYolu" />
+                <ScalarProperty Name="tatliID" ColumnName="tatliID" />
+                <ScalarProperty Name="tatliAdi" ColumnName="tatliAdi" />
+                <ScalarProperty Name="malzemeler" ColumnName="malzemeler" />
+                <ScalarProperty Name="yapilisi" ColumnName="yapilisi" />
+                <ScalarProperty Name="tKategoriID" ColumnName="tKategoriID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tatliKategori">
+            <EntityTypeMapping TypeName="yemekTatliModel.tatliKategori">
+              <MappingFragment StoreEntitySet="tatliKategori">
+                <ScalarProperty Name="tKategoriID" ColumnName="tKategoriID" />
+                <ScalarProperty Name="tKategoriAdi" ColumnName="tKategoriAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="yemek">
+            <EntityTypeMapping TypeName="yemekTatliModel.yemek">
+              <MappingFragment StoreEntitySet="yemek">
+                <ScalarProperty Name="populerlik" ColumnName="populerlik" />
+                <ScalarProperty Name="ResimYolu" ColumnName="ResimYolu" />
+                <ScalarProperty Name="yemekID" ColumnName="yemekID" />
+                <ScalarProperty Name="yemekAdi" ColumnName="yemekAdi" />
+                <ScalarProperty Name="yKategoriID" ColumnName="yKategoriID" />
+                <ScalarProperty Name="malzemeler" ColumnName="malzemeler" />
+                <ScalarProperty Name="yapilisi" ColumnName="yapilisi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="yemekKategori">
+            <EntityTypeMapping TypeName="yemekTatliModel.yemekKategori">
+              <MappingFragment StoreEntitySet="yemekKategori">
+                <ScalarProperty Name="yKategoriID" ColumnName="yKategoriID" />
+                <ScalarProperty Name="yKategoriAdi" ColumnName="yKategoriAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

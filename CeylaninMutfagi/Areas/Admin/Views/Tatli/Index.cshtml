@@ -1,0 +1,51 @@
+﻿@model  List<tatli>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1>Tatlı Listesi ve Düzenleme Bölümü</h1>
+
+            </div>
+
+            <div class="panel-body">
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Yemek ID</th>
+                            <th>Yemek Adı</th>
+                            <th>Kategori</th>
+                            <th>Malzemesi</th>
+                            <th>Yapılışı</th>
+                            <th>Resim Yolu</th>
+                            <th>Popülerlik</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th>@item.tatliID</th>
+                                <td>@item.tatliAdi</td>
+                                <td>@item.tKategoriID</td>
+                                <td>@item.malzemeler</td>
+                                <td>@item.yapilisi</td>
+                                <td>@item.ResimYolu</td>
+                                <td>@item.populerlik</td>
+                              <td>@Html.ActionLink("Düzenle", "Edit", "Tatli", new { id = @item.tatliID }, null)  | @Html.ActionLink("Sil", "Delete", "Tatli", new { id = @item.tatliID }, null)</td>
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

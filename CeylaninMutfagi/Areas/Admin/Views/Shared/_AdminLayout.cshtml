@@ -1,0 +1,276 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Neon Admin Panel" />
+    <meta name="author" content="" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
+    <link rel="stylesheet" href="~/assets/css/font-icons/entypo/css/entypo.css">
+
+    <link rel="stylesheet" href="~/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="~/assets/css/neon-core.css">
+    <link rel="stylesheet" href="~/assets/css/neon-theme.css">
+    <link rel="stylesheet" href="~/assets/css/neon-forms.css">
+    <link rel="stylesheet" href="~/assets/css/custom.css">
+
+    <link rel="stylesheet" href="~/assets/js/jvectormap/jquery-jvectormap-1.2.2.css">
+    <link rel="stylesheet" href="~/assets/js/rickshaw/rickshaw.min.css">
+    <link rel="stylesheet" href="~/Scripts/ckeditor/contents.css">
+    <script src="~/assets/js/jquery-1.11.0.min.js"></script>
+    
+</head>
+<body class="page-body  page-fade">
+
+<div class="page-container">
+    <!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+
+    <div class="sidebar-menu">
+        <div class="sidebar-menu-inner">
+
+            <header class="logo-env">
+                <!-- logo -->
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="~/assets/images/logo@2x.png" width="120" alt="" />
+                    </a>
+                </div>
+                <!-- logo collapse icon -->
+                <div class="sidebar-collapse">
+                    <a href="#" class="sidebar-collapse-icon">
+                        <!-- add class "with-animation" if you want sidebar to have animation during expanding/collapsing transition -->
+                        <i class="entypo-menu"></i>
+                    </a>
+                </div>
+
+                <!-- open/close menu icon (do not remove if you want to enable menu on mobile devices) -->
+                <div class="sidebar-mobile-menu visible-xs">
+                    <a href="#" class="with-animation">
+                        <!-- add class "with-animation" to support animation -->
+                        <i class="entypo-menu"></i>
+                    </a>
+                </div>
+            </header>
+
+
+            <ul id="main-menu" class="main-menu">
+                <!-- add class "multiple-expanded" to allow multiple submenus to open -->
+                <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
+                <li class="active opened active">
+                    <a href="index.html">
+                        <i class="entypo-gauge"></i>
+                        <span class="title">Site İşlemleri</span>
+                    </a>
+                    <ul>
+                        <li class="active">
+         
+                                @Html.ActionLink("Yemek Ekle", "Add", "yemek")
+ 
+                        </li>
+                        <li>
+                           @Html.ActionLink("Yemek Düzenle", "Index", "yemek")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Yemek Kategori Ekle", "kategoriEkle", "yemek")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Yemek Kategori Düüzenle", "kategoriIndex", "yemek")
+                        </li>
+                        <li>
+                       
+                            @Html.ActionLink("Tatli Ekle", "Add", "Tatli")
+                   
+                        </li>
+                        <li>
+                          @Html.ActionLink("Tatlı Düzenle", "Index", "Tatli")
+                          </li>      
+                        </li>
+                        <li>
+                            @Html.ActionLink("Tatli Kategori Ekle", "kategoriEkle", "Tatli")
+                      
+                        </li>
+                        <li>
+                            @Html.ActionLink("Tatli Kategori Düzenle", "kategoriIndex", "Tatli");
+                        </li>
+                        <li>
+                            @Html.ActionLink("Slider Ekle","Add","Slider");
+                           
+                        </li>
+                        <li>
+                            
+                                @Html.ActionLink("Slider Düzenle ve Sil", "Index", "Slider");
+                          
+                        </li>
+
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="layout-api.html">
+                        <i class="entypo-layout"></i>
+                        <span class="title">Üyelik İşlemleri</span>
+                    </a>
+                    <ul>
+                        <li>
+                       
+                            @Html.ActionLink(" Rol Listesi", "Index", "RolYonetim");
+                        </li>
+                        <li>
+                            @Html.ActionLink("Yeni Rol Ekle", "RolEkle", "RolYonetim");
+                        </li>
+                        <li>
+                            @Html.ActionLink("Kullanıcıya Rol Ekle", "RolKullaniciEkle", "RolYonetim");
+                        </li>
+
+
+                    </ul>
+                </li>
+
+
+
+            </ul>
+
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="row">
+
+            <!-- Profile Info and Notifications -->
+            
+
+
+            <!-- Raw Links -->
+            <div class="col-md-6 col-sm-4 clearfix ">
+
+                <ul class="list-inline links-list">
+
+                    <!-- Language Selector -->
+                    <li class="dropdown language-selector">
+
+                        Dil: &nbsp;
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true">
+                            <img width="20px" height="20px" class="img-circle" src="~/assets/images/tr.jpg" />
+                        </a>
+
+                        <ul class="dropdown-menu pull-right">
+                            <li>
+                                <a href="#">
+                                    <img width="20px" height="20px" class="img-circle" src="~/assets/images/tr.jpg" />
+                                    <span>Türkçe</span>
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="#">
+                                    <img src="~/assets/images/flag-uk.png" />
+                                    <span>İngilizce</span>
+                                </a>
+                            </li>
+
+
+
+                        </ul>
+
+                    </li>
+
+                    <li class="sep"></li>
+
+                    <li class="profile-info dropdown">
+                    <!-- add class "pull-right" if you want to place this from right -->
+
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      <span>@User.Identity.Name</span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+
+
+                        <!-- Profile sub-links -->
+                        <li>
+                      
+                            @Html.ActionLink("Hesap", "Index", "Manage", new { Area = "" }, new { })
+
+                    </li>
+
+                    <li>
+                        @using (Html.BeginForm("LogOff","Account", new {Area=""}, FormMethod.Get, new { id = "logoutForm", @class = "navbar-right" }))
+                        {
+                        @Html.AntiForgeryToken()
+
+                        <a href="javascript:document.getElementById('logoutForm').submit()">Çıkış</a>
+                        
+                        }
+                    </li>
+
+                  
+
+                    <li>
+                    
+                    </li>
+                </ul>
+                </li>
+                </ul>
+
+            </div>
+
+        </div>
+        <div>
+            @RenderBody();
+        </div>
+        <!-- Footer -->
+        <footer class="main">
+
+            &copy; 2016 <strong>CeyLan Çakmar </strong><a " target=" _blank"></a>
+
+        </footer>
+    </div>
+    </div>
+ 
+    <!-- ckeditor-->
+    
+    <script src="~/Scripts/ckeditor/styles.js"></script>
+    <script src="~/Scripts/ckeditor/config.js"></script>
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
+    <!-- Bottom scripts (common) -->
+    <script src="~/assets/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js"></script>
+    <script src="~/assets/js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="~/assets/js/gsap/main-gsap.js"></script>
+
+    <script src="~/assets/js/joinable.js"></script>
+    <script src="~/assets/js/resizeable.js"></script>
+    <script src="~/assets/js/neon-api.js"></script>
+  
+
+    <!-- Imported scripts on this page -->
+    <script src="~/assets/js/bootstrap-datepicker.js"></script>
+    <script src="~/assets/js/bootstrap-timepicker.min.js"></script>
+    <script src="~/assets/js/bootstrap-colorpicker.min.js"></script>
+    <script src="~/assets/js/daterangepicker/moment.min.js"></script>
+    <script src="~/assets/js/daterangepicker/daterangepicker.js"></script>
+    <script src="~/assets/js/jvectormap/jquery-jvectormap-europe-merc-en.js"></script>
+    <script src="~/assets/js/jquery.sparkline.min.js"></script>
+    <script src="~/assets/js/rickshaw/vendor/d3.v3.js"></script>
+    <script src="~/assets/js/rickshaw/rickshaw.min.js"></script>
+    <script src="~/assets/js/raphael-min.js"></script>
+    <script src="~/assets/js/morris.min.js"></script>
+    <script src="~/assets/js/toastr.js"></script>
+    <script src="~/assets/js/neon-chat.js"></script>
+    <!-- Demo Settings -->
+    <script src="~/assets/js/neon-demo.js"></script>
+    <!-- JavaScripts initializations and stuff -->
+    <script src="~/assets/js/neon-custom.js"></script>
+    <script src="~/assets/js/bootstrap.js"></script>
+    <script type="text/javascript">
+        $('.datepicker').datepicker({
+            format: 'dd.mm.yy',
+           
+        })
+
+    </script>
+ 
+ 
+
+</body>
+</html>

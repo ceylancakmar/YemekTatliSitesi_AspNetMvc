@@ -1,0 +1,42 @@
+﻿@model List<CeylaninMutfagi.yemek>
+@{
+    ViewBag.Title = "Ceylanın Mutfağı";
+}
+<div class="container">
+    <div class="row panel-arasi">
+        <div class="col-md-3">
+            <div class="list-group panel-boyut">
+                <a class="list-group-item active ">
+                    YEMEK TARİFLERİ
+                </a>
+                <a href="@Url.Action("yemek", "Home")" class="list-group-item padayar"><span class="glyphicon glyphicon-cutlery"> <strong>Etli Yemek Tarifleri</strong></span></a>
+                <a href="@Url.Action("yemek", "Home")" class="list-group-item padayar"><span class="glyphicon glyphicon-cutlery"> <strong>Sebzeli yemek tarifleri </strong></span></a>
+                <a href="@Url.Action("yemek", "Home")" class="list-group-item padayar"><span class="glyphicon glyphicon-cutlery"> <strong>Balıklı Yemek Tarifleri</strong></span></a>
+                <a href="@Url.Action("yemek", "Home")" class="list-group-item padayar"><span class="glyphicon glyphicon-cutlery"> <strong>Tavuklu Yemekler</strong></span></a>
+                <a href="@Url.Action("yemek", "Home")" class="list-group-item padayar"><span class="glyphicon glyphicon-cutlery"> <strong>Pilav Tarifleri</strong></span></a>
+                <a href="@Url.Action("yemek", "Home")" class="list-group-item padayar"><span class="glyphicon glyphicon-cutlery"> <strong>Makarna Tarifleri</strong></span></a>
+            </div>
+        </div>
+
+        <h3>Etli Yemek Tarifleri</h3>
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3 ana-resimler-ayar">
+
+                <a href="@Url.Action("yemekDetay", "Home",new  {id=@item.yemekID })" class="thumbnail">
+                    <img src="@item.ResimYolu">@item.yemekAdi
+                </a>
+
+            </div>
+        }
+        
+       
+
+
+
+    </div>
+   
+</div>
+<script src="\Content\js/jquery-3.1.0.min.js"></script>
+
+<script src="\Content\js/bootstrap.min.js"></script>

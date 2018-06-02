@@ -1,0 +1,72 @@
+﻿@model CeylaninMutfagi.tatli
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Silmek İstediğinizden emin Misniz</h3>
+<div>
+    <h4>tatli</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tatliAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tatliAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.malzemeler)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.malzemeler)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.yapilisi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.yapilisi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResimYolu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResimYolu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.populerlik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.populerlik)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tatliKategori.tKategoriAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tatliKategori.tKategoriAdi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @Html.ActionLink("Sil ", "DeleteConfirm", new { id = Model.tatliID }) | @Html.ActionLink(" Listeye Dön", "Index")
+        </div>
+    }
+</div>

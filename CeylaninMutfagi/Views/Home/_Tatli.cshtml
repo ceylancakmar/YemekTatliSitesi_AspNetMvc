@@ -1,0 +1,15 @@
+﻿
+@model List<tatli>
+@{
+    Layout = null;
+}
+@foreach (var item in Model)
+{
+    <div class="col-xs-6 col-md-4 ana-resimler-ayar">
+        <a href="@Url.Action("tatliDetay", "Home",new  {id=@item.tatliID })" class="thumbnail">
+            <img src="@item.ResimYolu">@item.tatliAdi
+        </a>
+
+    </div>
+}
+

@@ -1,0 +1,70 @@
+﻿@model CeylaninMutfagi.yemek
+
+
+@{
+    ViewBag.Title = "Yemek Sil";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<h3>Silmek İstediğinizden Emin misniz?</h3>
+<div>
+    <h2>yemek</h2>
+   
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.yemekAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.yemekAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.malzemeler)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.malzemeler)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.yapilisi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.yapilisi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResimYolu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResimYolu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.populerlik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.populerlik)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.yemekKategori.yKategoriAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.yemekKategori.yKategoriAdi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+           @Html.ActionLink("Sil ", "DeleteConfirm", new { id = Model.yemekID }) | @Html.ActionLink(" Listeye Dön", "Index")
+        </div>
+    }
+</div>

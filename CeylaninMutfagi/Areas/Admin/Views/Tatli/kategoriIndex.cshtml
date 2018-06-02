@@ -1,0 +1,46 @@
+﻿@model List<tatliKategori>
+@{
+    ViewBag.Title = "kategoriIndex";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1>Kategori Listesi ve Düzenleme Bölümü</h1>
+
+            </div>
+
+            <div class="panel-body">
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Katedori ID</th>
+                            <th>kotegori  Adı</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th>@item.tKategoriID</th>
+                                <td>@item.tKategoriAdi</td>
+
+
+                                <td>@Html.ActionLink("Düzenle", "kategoriEdit","Tatli", new { id = @item.tKategoriID }, null)  |  @Html.ActionLink("Sil", "kategoriDelete", "Tatli", new { id = @item.tKategoriID }, null)</td>
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

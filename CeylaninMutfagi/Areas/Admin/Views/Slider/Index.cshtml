@@ -1,0 +1,47 @@
+﻿@model List<Slider>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1>Slider Listesi ve Düzenleme Bölümü</h1>
+                
+            </div>
+
+            <div class="panel-body">
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Slider Metni</th>
+                            <th>Resim Yolu</th>
+                            <th>Başlangıç Tarihi</th>
+                            <th>Bitiş Tarihi</th>
+                            <th>işlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th>@item.ID</th>
+                                <td>@item.SliderText</td>
+                                <td>@item.ResimYolu</td>
+                                <td>@item.BaslangicTarihi</td>
+                                <td>@item.BitisTarihi</td>
+                                <td>@Html.ActionLink("Düzenle","Edit","Slider",new { id=@item.ID },null)  | @Html.ActionLink("Sil","Delete","Slider",new { id = @item.ID }, null)</td>
+                            </tr>
+                        }
+                      
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
